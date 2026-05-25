@@ -1,0 +1,1 @@
+console.log("TrendScope AI Loaded Successfully");
