@@ -4,6 +4,10 @@ venv/
 __pycache__/
 *.pyc
 
+# environment files
 .env
 
 node_modules/
+
+# database files
+.db
