@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>TrendScope AI</title>
+
+    <link rel="stylesheet"
+          href="styles/dashboard.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            <div>
+
+                <h2>TrendScope AI</h2>
+
+                <span>AI Trend Intelligence Platform</span>
+
+            </div>
+
+        </div>
+
+        <div class="profile">
+
+            <span id="user-info"></span>
+
+            <button onclick="logout()">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </nav>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <span class="hero-badge">
+                <i class="fa-solid fa-sparkles"></i>
+                AI-Powered Trend Intelligence
+            </span>
+
+            <h1>
+                Predict Tomorrow's Trends Today
+            </h1>
+
+            <p>
+                Monitor emerging trends across Technology, AI, Business,
+                Gaming, Sports and more using Machine Learning,
+                NLP and Predictive Analytics.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ================= STATS ================= -->
+
+    <section class="stats">
+
+        <div class="card">
+
+            <div class="card-icon">
+
+                <i class="fa-solid fa-newspaper"></i>
+
+            </div>
+
+            <div>
+
+                <h3>Total Articles</h3>
+
+                <h2 id="articles">--</h2>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-icon">
+
+                <i class="fa-solid fa-layer-group"></i>
+
+            </div>
+
+            <div>
+
+                <h3>Categories</h3>
+
+                <h2>14</h2>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-icon">
+
+                <i class="fa-solid fa-chart-column"></i>
+
+            </div>
+
+            <div>
+
+                <h3>Average Score</h3>
+
+                <h2 id="avg-score">--</h2>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-icon">
+
+                <i class="fa-solid fa-robot"></i>
+
+            </div>
+
+            <div>
+
+                <h3>Predictions</h3>
+
+                <h2>20</h2>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="chart-section">
+
+        <div class="chart-header">
+
+            <div>
+
+                <span class="analytics-badge">
+                    Analytics
+                </span>
+
+                <h2>Trend Score Overview</h2>
+
+                <p>
+                    Top trending topics ranked by AI-generated trend score.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="chart-card">
+
+            <canvas id="trendChart"></canvas>
+
+        </div>
+
+    </section>
+
+
+    <div class="category-filter">
+
+        <button class="active" onclick="loadTopTrends()">All</button>
+
+        <button onclick="loadCategory('technology')">Technology</button>
+
+        <button onclick="loadCategory('ai')">AI</button>
+
+        <button onclick="loadCategory('business')">Business</button>
+
+        <button onclick="loadCategory('sports')">Sports</button>
+
+        <button onclick="loadCategory('gaming')">Gaming</button>
+
+        <button onclick="loadCategory('health')">Health</button>
+
+    </div>
+
+
+    <div class="search-container">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search trends..."
+            onkeyup="searchTrends()"
+        >
+
+    </div>
+
+    <section>
+
+        <h2>🔥 Top Trending Topics</h2>
+
+        <div id="top-trends" class="grid">
+            
+            <p>Loading top trends...</p>
+
+        </div>
+
+    </section>
+
+    <section>
+
+        <h2>📈 Future Trend Predictions</h2>
+
+        <div id="predictions"
+             class="grid">
+
+        </div>
+
+    </section>
+
+
+    <footer class="footer">
+
+        <p>
+            © 2026 TrendScope AI • Built with FastAPI, PostgreSQL,
+            Machine Learning & NLP
+        </p>
+
+    </footer>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="js/dashboard.js"></script>
+
+</body>
+
+</html>
