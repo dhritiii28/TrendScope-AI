@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sign Up | TrendScope AI</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="styles/auth.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="logo">
+
+            <h1>TrendScope AI</h1>
+
+            <p>Create your account and start exploring AI-powered trend predictions.</p>
+
+        </div>
+
+        <input
+            type="text"
+            id="username"
+            placeholder="👤 Username"
+        >
+
+        <input
+            type="email"
+            id="email"
+            placeholder="📧 Email Address"
+        >
+
+        <input
+            type="password"
+            id="password"
+            placeholder="🔒 Password"
+        >
+
+        <button onclick="registerUser()">
+
+            <i class="bi bi-person-plus-fill"></i>
+
+            Create Account
+
+        </button>
+
+        <p id="message"></p>
+
+        <div class="auth-link">
+
+            Already have an account?
+
+            <a href="login.html">
+
+                Login
+
+            </a>
+
+        </div>
+
+        <div class="auth-link" style="margin-top:12px;">
+
+            <a href="index.html">
+
+                ← Back to Home
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <script src="js/signup.js"></script>
+
+</body>
+
+</html>
