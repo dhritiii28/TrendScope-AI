@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>TrendScope AI</title>
+
+    <link rel="stylesheet"
+          href="styles/dashboard.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div id="loader" class="loader-overlay">
+
+    <div class="loader"></div>
+
+    <p>Loading dashboard...</p>
+
+</div>
+
+<div class="container">
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            <div>
+
+                <h2>TrendScope AI</h2>
+
+                <span>AI Trend Intelligence Platform</span>
+
+            </div>
+
+        </div>
+
+        <div class="profile">
+
+            <span id="user-info"></span>
+
+            <button onclick="handleLogout()">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </nav>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <span class="hero-badge">
+                <i class="fa-solid fa-sparkles"></i>
+                AI-Powered Trend Intelligence
+            </span>
+
+            <h1>
+                Predict Tomorrow's Trends Today
+            </h1>
+
+            <p>
+                Monitor emerging trends across Technology, AI, Business,
+                Gaming, Sports and more using Machine Learning,
+                NLP and Predictive Analytics.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ================= STATS ================= -->
+
+    <section class="stats">
+
+        <div class="card">
+
+            <div class="card-icon">
+
+                <i class="fa-solid fa-newspaper"></i>
+
+            </div>
+
+            <div>
+
+                <h3>Total Articles</h3>
+
+                <h2 id="articles">--</h2>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-icon">
+
+                <i class="fa-solid fa-layer-group"></i>
+
+            </div>
+
+            <div>
+
+                <h3>Categories</h3>
+
+                <h2>14</h2>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-icon">
+
+                <i class="fa-solid fa-chart-column"></i>
+
+            </div>
+
+            <div>
+
+                <h3>Average Score</h3>
+
+                <h2 id="avg-score">--</h2>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-icon">
+
+                <i class="fa-solid fa-robot"></i>
+
+            </div>
+
+            <div>
+
+                <h3>Predictions</h3>
+
+                <h2>20</h2>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <div class="category-filter">
+
+        <button class="active" onclick="loadTopTrends()">All</button>
+
+        <button onclick="loadCategory('technology')">Technology</button>
+
+        <button onclick="loadCategory('ai')">AI</button>
+
+        <button onclick="loadCategory('business')">Business</button>
+
+        <button onclick="loadCategory('sports')">Sports</button>
+
+        <button onclick="loadCategory('gaming')">Gaming</button>
+
+        <button onclick="loadCategory('health')">Health</button>
+
+    </div>
+
+
+    <div class="search-container">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search trends..."
+            onkeyup="searchTrends()"
+        >
+
+    </div>
+
+    <section>
+
+        <h2>🔥 Top Trending Topics</h2>
+
+        <div id="top-trends" class="grid">
+            
+            <p>Loading top trends...</p>
+
+        </div>
+
+    </section>
+
+    <section>
+
+        <h2>📈 Future Trend Predictions</h2>
+
+        <div id="predictions"
+             class="grid">
+
+        </div>
+
+    </section>
+
+    <!-- ================= CATEGORY COMPARISON ================= -->
+
+    <section class="comparison-section">
+
+        <h2>🤖 AI Category Comparison</h2>
+
+        <div class="comparison-controls">
+
+            <select id="category1">
+
+                <option value="">Select Category</option>
+
+            </select>
+
+            <span class="vs">VS</span>
+
+            <select id="category2">
+
+                <option value="">Select Category</option>
+
+            </select>
+
+            <button onclick="compareCategories()">
+
+                Analyze
+
+            </button>
+
+        </div>
+
+        <div id="comparison-results" class="comparison-results">
+
+        </div>
+
+        <div class="chart-card">
+
+            <canvas id="comparisonChart"></canvas>
+
+        </div>
+
+        <div id="comparison-summary"
+            class="comparison-summary">
+
+        </div>
+
+    </section>
+
+    <!-- ================= TREND ANALYTICS ================= -->
+
+    <section class="analytics-dashboard">
+
+        <div class="section-heading">
+
+            <span class="analytics-badge">Business Intelligence</span>
+
+            <h2>Trend Analytics Dashboard</h2>
+
+            <p>
+                Real-time insights across all collected news categories.
+            </p>
+
+        </div>
+
+        <div class="analytics-grid">
+
+            <div class="analytics-card">
+                <h4>Total Articles</h4>
+                <h2 id="analyticsArticles">--</h2>
+            </div>
+
+            <div class="analytics-card">
+                <h4>Average Trend Score</h4>
+                <h2 id="analyticsAverage">--</h2>
+            </div>
+
+            <div class="analytics-card">
+                <h4>Highest Trending Category</h4>
+                <h2 id="topCategory">--</h2>
+            </div>
+
+            <div class="analytics-card">
+                <h4>Average Predicted Score</h4>
+                <h2 id="predictionAverage">--</h2>
+            </div>
+
+        </div>
+
+        <div class="dashboard-charts">
+
+            <div class="chart-card">
+
+                <h3>Category Distribution</h3>
+
+                <canvas id="categoryDistributionChart"></canvas>
+
+            </div>
+
+            <div class="chart-card">
+
+                <h3>Top Categories by Trend Score</h3>
+
+                <canvas id="topCategoriesChart"></canvas>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= CATEGORY INSIGHTS ================= -->
+
+    <section class="category-insights">
+
+        <div class="section-heading">
+
+            <span class="analytics-badge">
+                Category Intelligence
+            </span>
+
+            <h2>Category Insights</h2>
+
+            <p>
+                AI-generated summary of category performance based on collected articles.
+            </p>
+
+        </div>
+
+        <div id="categoryInsights" class="insight-grid">
+
+        </div>
+
+    </section>
+
+
+    <footer class="footer">
+
+        <p>
+            © 2026 TrendScope AI • Built with FastAPI, PostgreSQL,
+            Machine Learning & NLP
+        </p>
+
+    </footer>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div id="error-popup" class="error-popup">
+
+    <i class="fa-solid fa-circle-exclamation"></i>
+
+    <span id="error-text"></span>
+
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/dashboard.js"></script>
+
+<div id="toast" class="toast">
+
+    <i id="toastIcon" class="fa-solid fa-circle-check"></i>
+
+    <span id="toastMessage"></span>
+
+</div>
+
+</body>
+
+</html>
